@@ -15,7 +15,7 @@ export const Data = {
     ],
     interestsLabel: "Interests",
     interests: [
-      "",
+      "IT",
       "",
       "",
     ],
@@ -84,18 +84,11 @@ export const Data = {
     ],
     projects: [
       {
-        name: "Starlink Data Tracker",
+        name: "",
         company: "Personal",
-        period: "Feb. 2022 - Present",
-        description: "Community maintained database to track various SpaceX Starlink data (avg. 6000 visitors per month).",
-        url: "https://starlinktrack.com"
-      },
-      {
-        name: "End Stat",
-        company: "Personal",
-        period: "Aug. 2021 - Oct. 2021",
-        description: "An open-source platform to facilitate endpoint status monitoring as part of a University project.",
-        url: "https://github.com/AliMickey/endstat"
+        period: "",
+        description: "",
+        url: ""
       },
     ],
   },
