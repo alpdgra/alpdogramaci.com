@@ -447,4 +447,66 @@ body.dark-theme {
   .profile__container {
     gap: 1.5rem;
   }
+
+    /* Education component additional styles */
+  .timeline__info-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    transition: 0.3s;
+  }
+
+  .timeline__info-button:hover {
+    color: var(--title-color);
+  }
+
+  .timeline__info-button:focus {
+    outline: 2px solid var(--text-color-light);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .timeline__additional-info {
+    margin-top: 0.5rem;
+    color: var(--text-color);
+  }
+
+  .timeline__additional-info p {
+    font-size: var(--smaller-font-size);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline__additional-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Animation that matches your theme */
+  .timeline__fade {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Country flag alignment */
+  .timeline__country-flag {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
 }

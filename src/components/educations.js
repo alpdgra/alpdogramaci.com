@@ -13,8 +13,8 @@ export const Educations = ({ educations }) => {
   );
 };
 
-const Education = ({ title, period, institution, country, description, additionalInfo}) => {
-  const [showResults, setShowResults] = useState(false)
+const Education = ({ title, period, institution, country, description, additionalInfo }) => {
+  const [showResults, setShowResults] = useState(false);
 
   return (
     <div className="timeline__content">
@@ -23,19 +23,52 @@ const Education = ({ title, period, institution, country, description, additiona
         <span className="timeline__line"></span>
       </div>
       <div className="timeline__data bd-grid">
-        <h3 className="timeline__title">{title}&nbsp;
-          <a onClick={() => showResults ? setShowResults(false) : setShowResults(true)}><i className={`bx bx-info-square`}></i></a>
-          {showResults &&
-          <div className="timeline__fade">
-            <br></br>
-            {additionalInfo.map((info) => (
-              <p>{info}</p>
+        <h3 className="timeline__title">
+          {title}
+          {additionalInfo && additionalInfo.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setShowResults(!showResults)}
+              className="timeline__info-button"
+              aria-expanded={showResults}
+              aria-label={showResults ? "Hide additional information" : "Show additional information"}
+            >
+              <i className="bx bx-info-square" aria-hidden="true"></i>
+            </button>
+          )}
+        </h3>
+        
+        {showResults && additionalInfo && (
+          <div 
+            className="timeline__fade timeline__additional-info"
+            role="region"
+            aria-label="Additional education information"
+          >
+            {additionalInfo.map((info, index) => (
+              <p key={index}>{info}</p>
             ))}
-          </div>}
-        </h3> 
-        <span className="timeline__fade">{period} | {institution} <img width="17" src={`https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/${country}.svg`} alt={country}></img></span>
+          </div>
+        )}
+
+        <div className="timeline__institution">
+          <span className="timeline__fade">
+            {period} | {institution}
+            {country && (
+              <img 
+                width="17" 
+                height="17"
+                src={`https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/${country}.svg`} 
+                alt={`Flag of ${country}`}
+                className="timeline__country-flag"
+              />
+            )}
+          </span>
+        </div>
+        
         <span className="timeline__description">{description}</span>
       </div>
     </div>
   );
 };
+
+export default Educations;
