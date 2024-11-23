@@ -5,21 +5,18 @@ export const Options = () => {
   try {
     lsTheme = localStorage.getItem("theme");
     lsIcon = localStorage.getItem("icon");
-    lsSnow = JSON.parse(localStorage.getItem("snow"));
   } catch (e) {
     console.error(`All Cookies blocked - Error: ${e.message}`);
   }
 
   const [theme, setTheme] = useState(lsTheme || "light");
   const [icon, setIcon] = useState(lsIcon || "bx-moon");
-  const [snow, setSnow] = useState(lsSnow);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
     localStorage.setItem("icon", icon);
-    localStorage.setItem("snow", snow);
     document.body.classList[theme === "dark" ? "add" : "remove"]("dark-theme");
-  }, [theme, snow, icon]);
+  }, [theme, icon]);
 
   const _toggleTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
@@ -28,15 +25,7 @@ export const Options = () => {
 
   return (
     <div className="home__options">
-      {theme === "dark" && (
-        <i
-          className="bx bx-cloud-snow enable-snow"
-          title="Activate Snow"
-          id="snow-button"
-          onClick={_enableSnow}
-        />
-      )}
-      <SnowEffect/>
+      {theme === "dark"}
       <i
         className={`bx ${icon} change-theme`}
         title="Toggle Theme"
