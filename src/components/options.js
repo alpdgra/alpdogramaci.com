@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export const Options = () => {
-  var { lsTheme, lsIcon, lsSnow } = "";
+  var { lsTheme, lsIcon } = "";
   try {
     lsTheme = localStorage.getItem("theme");
     lsIcon = localStorage.getItem("icon");
