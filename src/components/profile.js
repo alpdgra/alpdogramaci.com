@@ -34,7 +34,7 @@ export const Profile = ({
               <i className="bx bx-map profile__icon"/> {location}
             </span>
             <span className="profile__information">
-              <a href="mailto:contact@adogramaci.com" style={{ textDecoration: 'none', color: 'inherit' }}><i className="bx bx-envelope profile__icon"/> {email}</a>
+              <a href={`mailto:${email}`} style={{ textDecoration: 'none', color: 'inherit' }}><i className="bx bx-envelope profile__icon"/> {email}</a>
             </span>
             {/* <span className="profile__information">
               <i className="bx bx-phone profile__icon"/> {phone}
