@@ -1,0 +1,13 @@
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
+
+# Dependencies (none required for this static site)
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
