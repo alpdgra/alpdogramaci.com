@@ -11,7 +11,7 @@ public/          # everything that gets deployed (the Pages build output directo
   index.html
   404.html       # served automatically by Pages on unmatched paths
   styles.css
-  fonts/         # Inter, self-hosted as variable-weight woff2 subsets
+  fonts/         # IBM Plex Sans + Plex Mono, self-hosted woff2 latin subsets
   profile.jpg
   favicon.ico
   robots.txt
@@ -21,9 +21,19 @@ data.js          # legacy content data from the old React version; not deployed
 wrangler.toml    # Pages project config (pages_build_output_dir = "public")
 ```
 
-The page makes **no third-party requests** — no icon font, no CDN, no analytics. Icons are an
-inline SVG sprite and Inter is served from `public/fonts/`, which is why the Content-Security-Policy
-in `_headers` can be `'self'` throughout.
+The page makes **no third-party requests** — no icon font, no CDN, no analytics. Type is served from
+`public/fonts/`, which is why the Content-Security-Policy in `_headers` can be `'self'` throughout.
+
+## Design notes
+
+The page is set as a printed document: IBM Plex Mono for the name, section labels and all metadata,
+IBM Plex Sans for prose, and hairline rules instead of cards or boxes. Dates sit in a left gutter
+that lines up with the section labels, so the whole page shares one vertical edge. Current roles are
+marked `now` in the accent red.
+
+Everything is driven by the custom properties at the top of `styles.css` — `--accent` recolours the
+page, `--gutter` moves the date column, and the `prefers-color-scheme: dark` block re-tints to a
+warm dark without changing any layout.
 
 ## Deploying from GitHub
 
@@ -63,9 +73,7 @@ python3 -m http.server -d public 8080
   that link work.
 - Adding an external asset (analytics, a CDN script, a hosted font) means widening the CSP in
   `_headers` to match, or the browser will block it.
-- `profile.jpg` is a 128×128 placeholder; the avatar renders at 96px, so a 192×192 or larger image
-  will look sharper on high-DPI screens.
-- Colours are defined once as custom properties at the top of `styles.css`, with a light-mode block
-  right below. Changing `--accent` restyles the whole page.
-- Print styles are included — the page prints to a single clean page, so "Save as PDF" from the
-  browser is a reasonable way to produce `resume.pdf`.
+- `profile.jpg` is still a 128×128 placeholder. The portrait slot is a 4:5 rectangle rendered up to
+  ~168px wide, so replace it with an image at least 360×450 (720×900 for high-DPI screens).
+- Print styles are included: the CV prints to two A4 pages with entries kept whole, so "Save as PDF"
+  from the browser is a reasonable way to produce `resume.pdf`.

@@ -1,76 +1,78 @@
-/* ------------------------------------------------------------------
-   Inter, self-hosted as a variable font (weights 400-700 in one file).
-   Subsets are split so latin-ext is only fetched if the page actually
-   uses a glyph from it.
------------------------------------------------------------------- */
+/* ==================================================================
+   Alp Dogramaci — CV
+   Set as a printed document: mono display type, a year gutter, and
+   hairline rules doing all the structural work. Warm paper, ink, and
+   one accent red.
+   ================================================================== */
+
 @font-face {
-  font-family: "Inter";
+  font-family: "Plex Sans";
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 400 600;
   font-display: swap;
-  src: url("/fonts/inter-latin.woff2") format("woff2");
+  src: url("/fonts/plex-sans-var.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
     U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: "Plex Mono";
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 400;
   font-display: swap;
-  src: url("/fonts/inter-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
-    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
-    U+2C60-2C7F, U+A720-A7FF;
+  src: url("/fonts/plex-mono-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/plex-mono-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* ------------------------------------------------------------------
    Tokens
 ------------------------------------------------------------------ */
 :root {
-  color-scheme: dark light;
+  color-scheme: light dark;
 
-  /* Dark is the default theme. */
-  --bg: oklch(0.18 0.012 260);
-  --bg-glow: oklch(0.32 0.05 255 / 0.35);
-  --surface: oklch(0.22 0.014 260);
-  --surface-2: oklch(0.27 0.016 260);
-  --border: oklch(1 0 0 / 0.09);
-  --border-strong: oklch(1 0 0 / 0.16);
-  --title: oklch(0.96 0.005 260);
-  --text: oklch(0.86 0.012 260);
-  --muted: oklch(0.68 0.018 260);
-  --accent: oklch(0.75 0.13 235);
-  --accent-soft: oklch(0.75 0.13 235 / 0.14);
-  --shadow: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 32px -12px oklch(0 0 0 / 0.5);
+  /* Warm paper and ink, with the accent lifted from the red in the portrait. */
+  --paper: oklch(0.973 0.008 80);
+  --paper-2: oklch(0.945 0.011 80);
+  --ink: oklch(0.235 0.012 60);
+  --ink-soft: oklch(0.45 0.014 60);
+  --ink-faint: oklch(0.6 0.014 60);
+  --rule: oklch(0.235 0.012 60 / 0.16);
+  --rule-hard: oklch(0.235 0.012 60 / 0.85);
+  --accent: oklch(0.52 0.185 26);
 
-  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sans: "Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  /* Fluid type: scales between 360px and 1200px viewports. */
-  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
-  --step-0: clamp(0.92rem, 0.89rem + 0.14vw, 1rem);
-  --step-1: clamp(1.02rem, 0.98rem + 0.2vw, 1.13rem);
-  --step-2: clamp(1.5rem, 1.35rem + 0.75vw, 2.05rem);
+  --text: clamp(0.9rem, 0.87rem + 0.12vw, 0.97rem);
+  --small: clamp(0.72rem, 0.7rem + 0.08vw, 0.78rem);
+  --title: clamp(1rem, 0.96rem + 0.2vw, 1.14rem);
+  --display: clamp(2.1rem, 1.2rem + 4.4vw, 4.35rem);
 
-  --radius: 16px;
-  --radius-sm: 10px;
-  --gutter: clamp(1.15rem, 0.7rem + 2.2vw, 2.5rem);
+  --gutter: 7.5rem;
+  --pad: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --bg: oklch(0.985 0.003 260);
-    --bg-glow: oklch(0.75 0.09 250 / 0.25);
-    --surface: oklch(1 0 0);
-    --surface-2: oklch(0.968 0.005 260);
-    --border: oklch(0 0 0 / 0.1);
-    --border-strong: oklch(0 0 0 / 0.18);
-    --title: oklch(0.24 0.02 260);
-    --text: oklch(0.36 0.018 260);
-    --muted: oklch(0.53 0.02 260);
-    --accent: oklch(0.53 0.16 250);
-    --accent-soft: oklch(0.53 0.16 250 / 0.1);
-    --shadow: 0 1px 2px oklch(0 0 0 / 0.05), 0 12px 28px -14px oklch(0 0 0 / 0.18);
+    --paper: oklch(0.175 0.009 65);
+    --paper-2: oklch(0.215 0.011 65);
+    --ink: oklch(0.93 0.008 80);
+    --ink-soft: oklch(0.75 0.012 80);
+    --ink-faint: oklch(0.6 0.012 80);
+    --rule: oklch(0.93 0.008 80 / 0.18);
+    --rule-hard: oklch(0.93 0.008 80 / 0.8);
+    --accent: oklch(0.68 0.17 30);
   }
 }
 
@@ -88,39 +90,17 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  min-height: 100svh;
-  padding: var(--gutter);
-  font-family: var(--font);
-  font-size: var(--step-0);
-  font-optical-sizing: auto;
-  line-height: 1.6;
-  color: var(--text);
-  background-color: var(--bg);
-  /* Soft light source behind the sidebar, fixed so it doesn't scroll away. */
-  background-image: radial-gradient(60rem 40rem at 12% -10%, var(--bg-glow), transparent 70%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  padding: var(--pad);
+  font-family: var(--sans);
+  font-size: var(--text);
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-h1,
-h2,
-h3 {
-  color: var(--title);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
-}
-
-p {
-  text-wrap: pretty;
 }
 
 ul,
@@ -129,42 +109,33 @@ ol {
   padding: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
+a {
+  color: inherit;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
 ::selection {
-  background: var(--accent-soft);
-  color: var(--title);
+  background: var(--accent);
+  color: var(--paper);
 }
 
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
-}
-
-.sprite {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.icon {
-  inline-size: 1.05em;
-  block-size: 1.05em;
-  flex: none;
-  color: var(--muted);
-  transition: color 0.18s ease, transform 0.18s ease;
 }
 
 .skip-link {
@@ -172,430 +143,375 @@ img {
   inset-inline-start: -100vw;
   top: 0.5rem;
   z-index: 10;
-  padding: 0.5rem 0.9rem;
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  color: var(--title);
-  font-size: var(--step--1);
+  padding: 0.4rem 0.8rem;
+  background: var(--paper);
+  border: 1px solid var(--rule-hard);
+  font-family: var(--mono);
+  font-size: var(--small);
 }
 
 .skip-link:focus-visible {
   inset-inline-start: 0.5rem;
 }
 
-/* ------------------------------------------------------------------
-   Layout
------------------------------------------------------------------- */
-.layout {
-  display: grid;
-  gap: clamp(1rem, 0.5rem + 1.5vw, 2rem);
-  max-width: 68rem;
+.sheet {
+  max-width: 60rem;
   margin-inline: auto;
 }
 
-@media (min-width: 62rem) {
-  .layout {
-    grid-template-columns: 20.5rem minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .sidebar {
-    position: sticky;
-    top: var(--gutter);
-  }
-}
-
-.sidebar {
-  display: grid;
+/* ------------------------------------------------------------------
+   Document strip
+------------------------------------------------------------------ */
+.strip {
+  display: flex;
+  justify-content: space-between;
   gap: 1rem;
-  align-content: start;
-}
-
-.content {
-  display: grid;
-  gap: clamp(1.75rem, 1rem + 2vw, 2.75rem);
-  min-width: 0;
-}
-
-.card {
-  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-}
-
-/* ------------------------------------------------------------------
-   Identity
------------------------------------------------------------------- */
-.identity {
-  display: grid;
-  justify-items: start;
-  gap: 0.3rem;
-}
-
-.avatar {
-  display: block;
-  margin-bottom: 0.85rem;
-  padding: 3px;
-  border-radius: 50%;
-  background: conic-gradient(from 210deg, var(--accent), var(--border-strong) 45%, var(--accent));
-}
-
-.avatar img {
-  inline-size: 5.5rem;
-  block-size: 5.5rem;
-  border-radius: 50%;
-  object-fit: cover;
-  background: var(--surface-2);
-  outline: 3px solid var(--surface);
-}
-
-.identity h1 {
-  font-size: var(--step-2);
-  letter-spacing: -0.03em;
-}
-
-.role {
-  color: var(--text);
-  font-size: var(--step-0);
-  font-weight: 500;
-}
-
-.place {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-top: 0.15rem;
-  color: var(--muted);
-  font-size: var(--step--1);
-}
-
-/* ------------------------------------------------------------------
-   Contact list
------------------------------------------------------------------- */
-.contact {
-  display: grid;
-  gap: 0.35rem;
-  margin-top: 1.35rem;
-  padding-top: 1.35rem;
-  border-top: 1px solid var(--border);
-  font-size: var(--step--1);
-}
-
-.contact a {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.6rem;
-  margin-inline: -0.6rem;
-  border-radius: var(--radius-sm);
-  transition: background-color 0.18s ease, color 0.18s ease;
-}
-
-.contact span {
-  overflow-wrap: anywhere;
-}
-
-.icon--trail {
-  margin-inline-start: auto;
-  opacity: 0;
-  transition: opacity 0.18s ease, transform 0.18s ease;
-}
-
-.contact a:hover,
-.contact a:focus-visible {
-  background: var(--accent-soft);
-  color: var(--title);
-}
-
-.contact a:hover .icon,
-.contact a:focus-visible .icon {
-  color: var(--accent);
-}
-
-.contact a:hover .icon--trail,
-.contact a:focus-visible .icon--trail {
-  opacity: 1;
-  transform: translate(1px, -1px);
-}
-
-/* ------------------------------------------------------------------
-   Section headings
------------------------------------------------------------------- */
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1.35rem;
-  color: var(--muted);
-  font-size: var(--step--1);
-  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.66rem;
   letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------
+   Masthead
+------------------------------------------------------------------ */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: clamp(1.25rem, 0.5rem + 2.5vw, 2.75rem);
+  padding-block: clamp(1.75rem, 1rem + 2.5vw, 3.25rem) clamp(1.25rem, 0.8rem + 1.5vw, 2rem);
+}
+
+.masthead__text {
+  flex: 1 1 18rem;
+}
+
+.masthead h1 {
+  font-family: var(--mono);
+  font-size: var(--display);
+  font-weight: 600;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.headline {
+  margin-top: clamp(0.9rem, 0.6rem + 1vw, 1.4rem);
+  max-width: 26ch;
+  font-size: var(--title);
+  font-weight: 500;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.located {
+  margin-top: 0.35rem;
+  font-family: var(--mono);
+  font-size: var(--small);
+  color: var(--ink-faint);
+}
+
+/* The portrait is a plain rectangle — no circle crop, no ring. */
+.portrait {
+  flex: 0 0 auto;
+  width: clamp(7rem, 4rem + 10vw, 10.5rem);
+}
+
+.portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-hard);
+  filter: saturate(0.94);
+}
+
+/* ------------------------------------------------------------------
+   Vitals — the rule band under the masthead
+------------------------------------------------------------------ */
+.vitals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  padding-block: 0.7rem;
+  border-block: 1px solid var(--rule-hard);
+  font-family: var(--mono);
+  font-size: var(--small);
+}
+
+.vitals li {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-inline-end: -0.1rem;
+}
+
+.vitals li:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 0.85em;
+  background: var(--rule);
+}
+
+/* ------------------------------------------------------------------
+   Sections
+------------------------------------------------------------------ */
+section {
+  margin-top: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+
+.section {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  font-family: var(--mono);
+  font-size: var(--small);
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.section-title::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, var(--border), transparent);
-}
-
-.card .section-title {
-  margin-bottom: 1rem;
+.section__num {
+  color: var(--accent);
+  font-weight: 400;
 }
 
 /* ------------------------------------------------------------------
-   Chips
+   Entries — year gutter on the left, content on the right
 ------------------------------------------------------------------ */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.chip {
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface-2);
-  color: var(--text);
-  font-size: var(--step--1);
-  line-height: 1.4;
-}
-
-/* ------------------------------------------------------------------
-   Timeline
------------------------------------------------------------------- */
-.timeline {
-  position: relative;
+.entry {
   display: grid;
-  gap: 1.75rem;
-  padding-inline-start: 1.5rem;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  gap: 0 1.5rem;
+  padding-block: clamp(1.1rem, 0.8rem + 0.8vw, 1.6rem);
+  border-top: 1px solid var(--rule);
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  inset-block: 0.55rem;
-  inset-inline-start: 5px;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--border-strong), var(--border) 60%, transparent);
+.entries > .entry:first-child {
+  border-top: 1px solid var(--rule-hard);
 }
 
-.timeline > li {
-  position: relative;
-  display: grid;
-  gap: 0.3rem;
-}
-
-.timeline > li::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: -1.5rem;
-  top: 0.42rem;
-  inline-size: 11px;
-  block-size: 11px;
-  border-radius: 50%;
-  border: 2px solid var(--border-strong);
-  background: var(--bg);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.timeline > li:first-child::before {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
-}
-
-.timeline > li:hover::before {
-  border-color: var(--accent);
-}
-
-.timeline h3 {
-  font-size: var(--step-1);
-}
-
-.meta {
+.when {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  color: var(--text);
-  font-size: var(--step--1);
-}
-
-.org {
-  font-weight: 500;
-}
-
-.badge {
-  padding: 0.05rem 0.4rem;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  background: var(--surface-2);
-  color: var(--muted);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
-
-.period {
-  color: var(--muted);
-  font-size: var(--step--1);
+  flex-direction: column;
+  font-family: var(--mono);
+  font-size: var(--small);
   font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  color: var(--ink-soft);
 }
 
-.summary {
-  margin-top: 0.4rem;
-  max-width: 62ch;
-  font-size: var(--step-0);
+/* The em dash hangs off the start year only, so the two lines read as a range. */
+.when > time:first-child::after {
+  content: " \2014";
+  color: var(--ink-faint);
 }
 
-/* ------------------------------------------------------------------
-   404
------------------------------------------------------------------- */
-.centered {
-  display: grid;
-  place-content: center;
+.when__end {
+  color: var(--ink-faint);
 }
 
-.notfound {
-  width: min(30rem, 100%);
-  margin-inline: auto;
-  text-align: center;
-}
-
-.notfound .code {
+.entry--current .when__end {
   color: var(--accent);
-  font-size: var(--step--1);
+}
+
+.what {
+  min-width: 0;
+}
+
+.what h3 {
+  font-size: var(--title);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
 }
 
-.notfound h1 {
-  margin-block: 0.4rem 0.6rem;
-  font-size: var(--step-2);
-  letter-spacing: -0.03em;
+.at {
+  margin-top: 0.2rem;
+  font-family: var(--mono);
+  font-size: var(--small);
+  color: var(--ink-soft);
 }
 
-.notfound .summary {
-  margin-inline: auto;
-  color: var(--muted);
+.at__sep {
+  margin-inline: 0.15rem;
+  color: var(--ink-faint);
 }
 
-.notfound .contact {
-  justify-items: center;
+.notes {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.4rem;
+  max-width: 64ch;
+  color: var(--ink-soft);
 }
 
-.notfound .contact a {
-  justify-content: center;
+/* Hanging bullets: the marker sits in the margin so text stays flush. */
+.notes li {
+  padding-inline-start: 1.05rem;
+  text-indent: -1.05rem;
+}
+
+.notes li::before {
+  content: "\2014";
+  display: inline-block;
+  width: 1.05rem;
+  text-indent: 0;
+  color: var(--accent);
 }
 
 /* ------------------------------------------------------------------
-   Footer
+   Skills — same gutter grid, so labels line up with the year column
 ------------------------------------------------------------------ */
-.site-footer {
-  max-width: 68rem;
-  margin: clamp(2.5rem, 2rem + 2vw, 4rem) auto 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: var(--step--1);
+/* Each dt/dd pair shares one row so the rule runs unbroken across the gap,
+   matching the entry rules above. */
+.skills > div {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  gap: 0 1.5rem;
+  padding-block: clamp(1.1rem, 0.8rem + 0.8vw, 1.6rem);
+  border-top: 1px solid var(--rule);
 }
 
-.site-footer a:hover {
-  color: var(--accent);
+.skills > div:first-child {
+  border-top-color: var(--rule-hard);
+}
+
+.skills dt {
+  font-family: var(--mono);
+  font-size: var(--small);
+  color: var(--ink-soft);
+}
+
+.skills dd {
+  padding-inline-end: clamp(0rem, -6rem + 14vw, 9rem);
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------
+   Colophon
+------------------------------------------------------------------ */
+.colophon {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule-hard);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------
+   Narrow screens — the gutter folds above the entry
+------------------------------------------------------------------ */
+@media (max-width: 44rem) {
+  .entry,
+  .skills > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .when {
+    flex-direction: row;
+    gap: 0.4rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .masthead h1 {
+    letter-spacing: -0.04em;
+  }
+
+  .skills dd {
+    padding-top: 0.35rem;
+    padding-inline-end: 0;
+  }
 }
 
 /* ------------------------------------------------------------------
    Motion
 ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   ::before,
   ::after {
-    animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
 
 /* ------------------------------------------------------------------
-   Print — a CV should come out of a printer cleanly.
+   Print — this is a CV, so paper is a first-class target
 ------------------------------------------------------------------ */
 @media print {
+  @page {
+    margin: 14mm 14mm 12mm;
+  }
+
   :root {
-    --bg: #fff;
-    --surface: #fff;
-    --surface-2: #fff;
-    --border: #d4d4d4;
-    --border-strong: #a3a3a3;
-    --title: #000;
-    --text: #1a1a1a;
-    --muted: #4a4a4a;
+    --paper: #fff;
+    --paper-2: #fff;
+    --ink: #000;
+    --ink-soft: #26241f;
+    --ink-faint: #55514a;
+    --rule: rgba(0, 0, 0, 0.22);
+    --rule-hard: rgba(0, 0, 0, 0.75);
     --accent: #000;
-    --accent-soft: transparent;
-    --shadow: none;
+    --display: 2.6rem;
+    --gutter: 6rem;
   }
 
   body {
     padding: 0;
-    background: #fff;
-    font-size: 10.5pt;
+    font-size: 9.6pt;
+    line-height: 1.42;
   }
 
-  .layout {
-    grid-template-columns: 17rem minmax(0, 1fr);
-    gap: 1.5rem;
+  .sheet {
     max-width: none;
   }
 
-  .sidebar {
-    position: static;
-  }
-
-  .card {
-    padding: 0 0 1rem;
-    border: 0;
-    box-shadow: none;
-  }
-
-  .skip-link,
-  .icon--trail {
+  .skip-link {
     display: none;
   }
 
-  .timeline > li {
+  .masthead {
+    padding-block: 1.1rem 0.9rem;
+  }
+
+  .portrait {
+    width: 6.5rem;
+  }
+
+  section {
+    margin-top: 1.4rem;
+  }
+
+  .entry,
+  .skills > div {
+    padding-block: 0.6rem;
     break-inside: avoid;
   }
 
-  .timeline > li:first-child::before {
-    box-shadow: none;
+  .notes {
+    margin-top: 0.45rem;
   }
 
-  /* Spell out link targets that aren't visible on paper, without letting a
-     long URL squeeze the label it belongs to. */
-  .contact a {
-    flex-wrap: wrap;
-    padding-inline: 0;
-    margin-inline: 0;
+  .section {
+    break-after: avoid;
   }
 
-  .contact span {
-    white-space: nowrap;
-  }
-
-  .contact a[href^="http"]::after {
-    content: attr(href);
-    flex-basis: 100%;
-    padding-inline-start: 1.65rem;
-    color: var(--muted);
-    font-size: 0.85em;
-    word-break: break-all;
+  /* Spell out link targets that paper can't resolve. */
+  .vitals a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    color: var(--ink-faint);
   }
 }
