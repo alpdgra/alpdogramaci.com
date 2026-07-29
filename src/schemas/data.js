@@ -1,95 +1,143 @@
+// Content mirrors the LinkedIn profile export at
+// https://www.linkedin.com/in/alp-dogramaci-0b2143265
+// Entries render in the order listed. Empty sections are skipped automatically.
 export const Data = {
   profile: {
     image: "./profile.jpg",
     name: "Alp Dogramaci",
-    occupation: "",
-    location: "Sydney, Australia",
+    occupation: "Digital Solutions Developer at The Hills Grammar School",
+    location: "Sydney, New South Wales, Australia",
     email: "me@alpdogramaci.com",
-    phone: "",
-    profileLabel: "Profile",
-    profile: "",
+
+    aboutLabel: "About",
+    about:
+      "Digital Solutions Developer at Hills Grammar, leading DevOps and CI/CD initiatives while building custom solutions on the Microsoft Power Platform. Currently completing a Bachelor of Information Technology majoring in Cybersecurity at Macquarie University.",
+
     skillsLabel: "Skills",
     skills: [
-      "Support",
-      "Infrastructure",
+      "DevOps",
+      "CI/CD",
+      "Microsoft Power Apps",
+      "Microsoft Power Automate",
+      "SharePoint",
+      "Microsoft 365",
+      "Azure AD",
+      "Intune",
+      "Entra",
+      "Windows Server",
+      "Active Directory",
+      "Group Policy",
+      "ClearPass",
+      "HPE Networking",
     ],
+
     interestsLabel: "Interests",
-    interests: [
-      "IT",
-      "",
-      "",
-    ],
-    socialLabel: "Social",
+    interests: ["Cybersecurity", "Cloud Infrastructure", "Automation"],
+
+    socialLabel: "Elsewhere",
     socials: [
       {
         label: "LinkedIn",
         name: "linkedin",
         url: "https://www.linkedin.com/in/alp-dogramaci-0b2143265",
-        className: "bxl-linkedin-square",
-      }
+        icon: "linkedin",
+      },
     ],
   },
+
   timeline: {
+    // Ordered by start date, most recent first.
     experiences: [
       {
-        title: "Service Desk and AV Technician",
-        period: "Jul. 2023 - Present",
+        title: "Digital Solutions Developer",
         company: "Hills Grammar",
-        country: "AU",
-        description: "Microsoft 365 Cloud Suite (Azure AD, Intune, Entra, Endpoint Protection, SharePoint, Teams, Power Apps, Power Automate) and On-Prem (Windows Server, AD, GPO, Clearpass, HPE).",
+        period: "May 2025 — Present",
+        location: "Kenthurst, NSW",
+        current: true,
+        highlights: [
+          "Leading DevOps initiatives across internal projects, including CI/CD pipeline design and implementation",
+          "Planning and managing development sprints with cross-functional teams",
+          "Building and maintaining custom digital solutions using Microsoft Power Platform (Power Apps, Power Automate, SharePoint integration)",
+          "Supporting cloud infrastructure with Microsoft 365, Azure AD, and Intune",
+          "Collaborating with IT and business units to deliver scalable, secure systems",
+        ],
+      },
+      {
+        title: "Service Desk and AV Technician",
+        company: "Hills Grammar",
+        period: "Jul 2023 — May 2025",
+        location: "Kenthurst, NSW",
+        highlights: [
+          "Provided Level 1 and 2 IT support across campus for users and AV systems",
+          "Developed small-scale Power Platform solutions to streamline internal processes and improve efficiency",
+          "Administered Microsoft 365, Azure AD, Intune, and Entra for endpoint and identity management",
+          "Managed on-premises infrastructure including Windows Server, Active Directory, and GPO",
+          "Maintained ClearPass and HPE network systems",
+          "Delivered efficient service through clear communication and strong troubleshooting skills",
+        ],
+      },
+      {
+        title: "IT Support Technician",
+        company: "JTC Technology",
+        period: "Apr 2023 — Jul 2023",
+        location: "Castle Hill, NSW",
+        highlights: [],
       },
       {
         title: "IT and Electronics Services Technician",
-        period: "Jan. 2023 - May. 2023",
-        company: "Interlink Services",
-        country: "AU",
-        description: "Perform asset management, hardware troubleshooting & various related duties",
+        company: "Interlink Asset Management Services",
+        period: "Jan 2023 — May 2023",
+        location: "Sydney, NSW",
+        highlights: [
+          "Perform asset management, hardware troubleshooting & various related duties",
+        ],
       },
       {
         title: "Apprentice Mechanic",
-        period: "Jun. 2022 - Nov. 2022",
         company: "Nissan Motor Corporation",
-        country: "AU",
-        description: "Maintenance & Repair · Stocking · Automotive · Automotive Repair · Mechanics",
+        period: "Jun 2022 — Nov 2022",
+        location: "Castle Hill, NSW",
+        highlights: [],
+      },
+      {
+        title: "Sales Employee",
+        company: "U.S. Lubricants",
+        period: "Mar 2020 — Present",
+        location: "Sydney, NSW",
+        current: true,
+        highlights: [
+          "Manage and direct sales, client relations, logistics & financials",
+        ],
       },
       {
         title: "Cashier",
-        period: "Mar. 2018 - May. 2020",
         company: "Oporto",
-        country: "AU",
-        description: "Cashiering · Stocking · Customer Service",
-      }
+        period: "Mar 2018 — Mar 2020",
+        location: "Castle Hill, NSW",
+        highlights: [],
+      },
     ],
+
     educations: [
       {
         title: "Bachelor of Information Technology, Cybersecurity",
-        period: "2023 - Present",
         institution: "Macquarie University",
-        country: "AU",
-        description: "WAM: 81.74 ~ GPA: 6.22",
-        additionalInfo: [
-          ""
-        ]
+        period: "Feb 2023 — 2026",
+        current: true,
+        description: "WAM: 81.74 · GPA: 6.22",
+        details: [],
       },
       {
-        title: "Higher School Certificate",
-        period: "2013 - 2021",
-        institution: "The Hills Grammar School",
-        country: "AU",
+        title: "High School Diploma",
+        institution: "Hills Grammar",
+        period: "Feb 2013 — Dec 2021",
         description: "",
-        additionalInfo: [
-          ""
-        ]
+        details: ["Distinguished Achievers"],
       },
     ],
-    projects: [
-      {
-        name: "",
-        company: "Personal",
-        period: "",
-        description: "",
-        url: ""
-      },
-    ],
+
+    // No projects listed on LinkedIn yet — this section stays hidden until
+    // an entry is added here.
+    projects: [],
   },
 };

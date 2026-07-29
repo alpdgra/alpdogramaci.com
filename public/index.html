@@ -2,21 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <title>Alp Dogramaci — Digital Solutions Developer</title>
+    <meta
+      name="description"
+      content="Alp Dogramaci — Digital Solutions Developer in Sydney, Australia. DevOps, CI/CD and Microsoft Power Platform, studying Cybersecurity at Macquarie University."
+    />
+    <meta name="author" content="Alp Dogramaci" />
+
+    <link rel="canonical" href="https://alpdogramaci.com/" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/profile.jpg" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link
-      rel="preload"
-      as="style"
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+
+    <meta name="theme-color" content="#eef1f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Alp Dogramaci — Digital Solutions Developer" />
+    <meta
+      property="og:description"
+      content="DevOps, CI/CD and Microsoft Power Platform. Sydney, Australia."
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-    />
-    <title>Alp Dogramaci | CV</title>
+    <meta property="og:url" content="https://alpdogramaci.com/" />
+    <meta property="og:image" content="https://alpdogramaci.com/profile.jpg" />
+    <meta name="twitter:card" content="summary" />
+
+    <script>
+      // Applies the stored/system theme before first paint so the page never
+      // flashes light before switching to dark.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          document.documentElement.dataset.theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        } catch (e) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

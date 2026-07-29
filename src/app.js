@@ -1,42 +1,92 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useEffect, useMemo } from "react";
 
-import { Profile } from "./components/profile";
-import { Experiences } from "./components/experiences";
-import { Educations } from "./components/educations";
-import { Projects } from "./components/projects";
-import { Menu } from "./components/menu";
+import { Sidebar } from "./components/sidebar";
+import { Timeline } from "./components/timeline";
+import { Nav } from "./components/nav";
+import { Icon } from "./components/icon";
 
-import { Data as dataSchema } from "./schemas/data";
-import { Menu as menuSchema } from "./schemas/menu";
+import { Data } from "./schemas/data";
+import { useTheme, useScrollSpy, useScrolledPast } from "./hooks";
 
 export const Resume = () => {
-  const query = "(min-width: 968px)";
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
+  const [theme, toggleTheme] = useTheme();
+  const showToTop = useScrolledPast(400);
 
+  const { profile, timeline } = Data;
+
+  // Normalise each source into the shape the shared Timeline renders.
+  const sections = useMemo(() => {
+    const experiences = timeline.experiences.map((item) => ({
+      ...item,
+      subtitle: item.company,
+    }));
+
+    const educations = timeline.educations.map((item) => ({
+      ...item,
+      subtitle: item.institution,
+    }));
+
+    const projects = timeline.projects.map((item) => ({
+      ...item,
+      title: item.name,
+      subtitle: item.company,
+    }));
+
+    return [
+      {
+        id: "experience",
+        title: "Experience",
+        icon: "briefcase",
+        items: experiences,
+      },
+      { id: "education", title: "Education", icon: "education", items: educations },
+      { id: "projects", title: "Projects", icon: "projects", items: projects },
+    ].filter((section) => section.items.length > 0);
+  }, [timeline]);
+
+  const navItems = useMemo(
+    () => [
+      { id: "profile", label: "Profile", icon: "user" },
+      ...sections.map(({ id, title, icon }) => ({ id, label: title, icon })),
+    ],
+    [sections]
+  );
+
+  const navIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
+  const active = useScrollSpy(navIds);
+
+  // Arms the scroll-reveal styles only once JS is running.
   useEffect(() => {
-    const media = window.matchMedia(query);
-    const listener = () => setMatches(media.matches);
-    media.addEventListener("change", listener);
-    return () => media.removeEventListener("change", listener);
-  }, [matches]);
-
-  const { profile, timeline} = dataSchema;
+    document.documentElement.classList.add("has-reveal");
+  }, []);
 
   return (
-    <Fragment>
-      {!matches && <Menu {...menuSchema} />}
-      <main className="l-main bd-container" id="bd-container">
-        <div className="resume" id="area-cv">
-          <div className="resume__left">
-            <Profile {...profile} />
-          </div>
-          <div className="resume__right">
-            <Experiences {...timeline} />
-            <Educations {...timeline} />
-            <Projects {...timeline} />
-          </div>
+    <>
+      <a className="skip-link" href="#experience">
+        Skip to content
+      </a>
+
+      <div className="page">
+        <div className="resume">
+          <Sidebar {...profile} theme={theme} toggleTheme={toggleTheme} />
+          <main className="main">
+            {sections.map((section) => (
+              <Timeline key={section.id} {...section} />
+            ))}
+          </main>
         </div>
-      </main>
-    </Fragment>
+      </div>
+
+      <Nav items={navItems} active={active} />
+
+      <button
+        type="button"
+        className={`to-top ${showToTop ? "is-visible" : ""}`.trim()}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+      >
+        <Icon name="arrowUp" size={18} />
+      </button>
+    </>
   );
 };
