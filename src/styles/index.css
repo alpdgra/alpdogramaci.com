@@ -684,8 +684,7 @@ button {
   .theme-toggle,
   .to-top,
   .skip-link,
-  .entry__toggle,
-  .contact__item--action {
+  .entry__toggle {
     display: none !important;
   }
 

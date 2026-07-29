@@ -42,8 +42,8 @@ npm run build  # production bundle in build/
 - **Theme** follows the OS by default and remembers an explicit choice in
   `localStorage`. An inline script in `public/index.html` applies it before first
   paint to avoid a flash of the wrong theme.
-- **The page is the CV.** `@media print` restyles it to black-on-white and spells
-  out link targets, so "Save as PDF" prints a clean two-page resume — there's no
-  separate PDF file to keep in sync.
+- **The page is the CV.** `@media print` restyles it to black-on-white in two
+  columns, so printing (or Save as PDF from the browser's print dialog) gives a
+  clean two-page resume — there's no separate PDF file to keep in sync.
 
 Forked from https://github.com/Maaato/react-resume

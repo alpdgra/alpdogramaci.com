@@ -15,13 +15,6 @@ const paths = {
       <path d="m22 7-9.1 5.5a2 2 0 0 1-2 0L2 7" />
     </>
   ),
-  download: (
-    <>
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <path d="m7 10 5 5 5-5" />
-      <path d="M12 15V3" />
-    </>
-  ),
   moon: <path d="M12 3a6.4 6.4 0 0 0 9 9 9 9 0 1 1-9-9Z" />,
   sun: (
     <>
@@ -55,7 +48,7 @@ const paths = {
       <circle cx="4" cy="4" r="2" />
     </>
   ),
-  // Unused today, kept as the obvious next entry for profile.socials
+  // profile.socials is empty today; these are the options it can reference.
   github: (
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8a5 5 0 0 0-.1-3.7S18.7.7 16 2.6a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1.1 5.1 1.1a5 5 0 0 0-.1 3.7 5.4 5.4 0 0 0-1.4 3.7c0 5.5 3.3 6.7 6.4 7a3.4 3.4 0 0 0-1 2.6V22" />
   ),

@@ -53,22 +53,6 @@ export const Masthead = ({
               </li>
             ))}
 
-            <li className="contact__item contact__item--action">
-              {/* The print stylesheet turns this page into the CV itself, so
-                  there is no separate PDF file to fall out of date. */}
-              <a
-                href="#print"
-                onClick={(event) => {
-                  event.preventDefault();
-                  window.print();
-                }}
-              >
-                <span className="contact__ring">
-                  <Icon name="download" size={17} />
-                </span>
-                Save as PDF
-              </a>
-            </li>
           </ul>
         </div>
 

@@ -34,14 +34,9 @@ export const Data = {
     interestsLabel: "Interests",
     interests: ["Cybersecurity", "Cloud Infrastructure", "Automation"],
 
-    socials: [
-      {
-        label: "LinkedIn",
-        handle: "linkedin.com/in/alp-dogramaci",
-        url: "https://www.linkedin.com/in/alp-dogramaci-0b2143265",
-        icon: "linkedin",
-      },
-    ],
+    // Contact renders one row per entry; empty means no links are shown.
+    // Shape: { label, handle, url, icon } — icon names live in components/icon.js
+    socials: [],
   },
 
   timeline: {
@@ -119,7 +114,7 @@ export const Data = {
       {
         title: "Bachelor of Information Technology, Cybersecurity",
         institution: "Macquarie University",
-        period: "Feb 2023 — 2026",
+        period: "Feb 2023 — 2027",
         description: "",
         details: [],
       },
