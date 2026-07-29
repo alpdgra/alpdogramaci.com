@@ -7,7 +7,7 @@ export const Data = {
     name: "Alp Dogramaci",
     occupation: "Digital Solutions Developer at The Hills Grammar School",
     location: "Sydney, New South Wales, Australia",
-    emails: ["alp.dgra@gmail.com", "me@alpdogramaci.com"],
+    emails: ["alp.dgra@gmail.com"],
 
     aboutLabel: "Profile",
     about:
@@ -124,7 +124,7 @@ export const Data = {
         details: [],
       },
       {
-        title: "High School Diploma",
+        title: "Higher School Certificate",
         institution: "Hills Grammar",
         period: "Feb 2013 — Dec 2021",
         description: "",
