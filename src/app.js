@@ -1,59 +1,18 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 
-import { Sidebar } from "./components/sidebar";
-import { Timeline } from "./components/timeline";
-import { Nav } from "./components/nav";
+import { Masthead } from "./components/masthead";
+import { Section, Entry, Band } from "./components/entry";
 import { Icon } from "./components/icon";
 
 import { Data } from "./schemas/data";
-import { useTheme, useScrollSpy, useScrolledPast } from "./hooks";
+import { useTheme, useScrolledPast } from "./hooks";
 
 export const Resume = () => {
   const [theme, toggleTheme] = useTheme();
   const showToTop = useScrolledPast(400);
 
   const { profile, timeline } = Data;
-
-  // Normalise each source into the shape the shared Timeline renders.
-  const sections = useMemo(() => {
-    const experiences = timeline.experiences.map((item) => ({
-      ...item,
-      subtitle: item.company,
-    }));
-
-    const educations = timeline.educations.map((item) => ({
-      ...item,
-      subtitle: item.institution,
-    }));
-
-    const projects = timeline.projects.map((item) => ({
-      ...item,
-      title: item.name,
-      subtitle: item.company,
-    }));
-
-    return [
-      {
-        id: "experience",
-        title: "Experience",
-        icon: "briefcase",
-        items: experiences,
-      },
-      { id: "education", title: "Education", icon: "education", items: educations },
-      { id: "projects", title: "Projects", icon: "projects", items: projects },
-    ].filter((section) => section.items.length > 0);
-  }, [timeline]);
-
-  const navItems = useMemo(
-    () => [
-      { id: "profile", label: "Profile", icon: "user" },
-      ...sections.map(({ id, title, icon }) => ({ id, label: title, icon })),
-    ],
-    [sections]
-  );
-
-  const navIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
-  const active = useScrollSpy(navIds);
+  const { experiences, educations, projects } = timeline;
 
   // Arms the scroll-reveal styles only once JS is running.
   useEffect(() => {
@@ -66,18 +25,79 @@ export const Resume = () => {
         Skip to content
       </a>
 
-      <div className="page">
-        <div className="resume">
-          <Sidebar {...profile} theme={theme} toggleTheme={toggleTheme} />
-          <main className="main">
-            {sections.map((section) => (
-              <Timeline key={section.id} {...section} />
-            ))}
-          </main>
-        </div>
-      </div>
+      <div className="sheet">
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+        >
+          <Icon name={theme === "dark" ? "sun" : "moon"} size={18} />
+        </button>
 
-      <Nav items={navItems} active={active} />
+        <Masthead {...profile} />
+
+        <div className="columns">
+          {/* Skills and interests ride in the short column so it doesn't
+              leave a well of white space beside the longer job history. */}
+          <div className="column">
+            <Section id="education" title="Education">
+              {educations.map((item) => (
+                <Entry
+                  key={`${item.institution}-${item.title}`}
+                  org={item.institution}
+                  role={item.title}
+                  period={item.period}
+                  description={item.description}
+                  details={item.details}
+                />
+              ))}
+            </Section>
+
+            <Band
+              id="skills"
+              title={profile.skillsLabel}
+              items={profile.skills}
+              inColumn
+            />
+            <Band
+              title={profile.interestsLabel}
+              items={profile.interests}
+              inColumn
+            />
+          </div>
+
+          <Section id="experience" title="Work Experience">
+            {experiences.map((item, index) => (
+              <Entry
+                key={`${item.company}-${index}`}
+                org={item.company}
+                role={item.title}
+                period={item.period}
+                location={item.location}
+                highlights={item.highlights}
+              />
+            ))}
+          </Section>
+        </div>
+
+        {projects.length > 0 && (
+          <div className="columns columns--single">
+            <Section id="projects" title="Projects">
+              {projects.map((item, index) => (
+                <Entry
+                  key={`${item.name}-${index}`}
+                  org={item.name}
+                  role={item.company}
+                  period={item.period}
+                  description={item.description}
+                  url={item.url}
+                />
+              ))}
+            </Section>
+          </div>
+        )}
+      </div>
 
       <button
         type="button"

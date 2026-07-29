@@ -7,9 +7,9 @@ export const Data = {
     name: "Alp Dogramaci",
     occupation: "Digital Solutions Developer at The Hills Grammar School",
     location: "Sydney, New South Wales, Australia",
-    email: "me@alpdogramaci.com",
+    emails: ["alp.dgra@gmail.com", "me@alpdogramaci.com"],
 
-    aboutLabel: "About",
+    aboutLabel: "Profile",
     about:
       "Digital Solutions Developer at Hills Grammar, leading DevOps and CI/CD initiatives while building custom solutions on the Microsoft Power Platform. Currently completing a Bachelor of Information Technology majoring in Cybersecurity at Macquarie University.",
 
@@ -34,11 +34,10 @@ export const Data = {
     interestsLabel: "Interests",
     interests: ["Cybersecurity", "Cloud Infrastructure", "Automation"],
 
-    socialLabel: "Elsewhere",
     socials: [
       {
         label: "LinkedIn",
-        name: "linkedin",
+        handle: "linkedin.com/in/alp-dogramaci",
         url: "https://www.linkedin.com/in/alp-dogramaci-0b2143265",
         icon: "linkedin",
       },
@@ -53,7 +52,6 @@ export const Data = {
         company: "Hills Grammar",
         period: "May 2025 — Present",
         location: "Kenthurst, NSW",
-        current: true,
         highlights: [
           "Leading DevOps initiatives across internal projects, including CI/CD pipeline design and implementation",
           "Planning and managing development sprints with cross-functional teams",
@@ -104,7 +102,6 @@ export const Data = {
         company: "U.S. Lubricants",
         period: "Mar 2020 — Present",
         location: "Sydney, NSW",
-        current: true,
         highlights: [
           "Manage and direct sales, client relations, logistics & financials",
         ],
@@ -123,8 +120,7 @@ export const Data = {
         title: "Bachelor of Information Technology, Cybersecurity",
         institution: "Macquarie University",
         period: "Feb 2023 — 2026",
-        current: true,
-        description: "WAM: 81.74 · GPA: 6.22",
+        description: "",
         details: [],
       },
       {

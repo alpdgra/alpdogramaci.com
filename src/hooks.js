@@ -39,33 +39,6 @@ export const useTheme = () => {
   return [theme, () => setTheme((prev) => (prev === "dark" ? "light" : "dark"))];
 };
 
-// Highlights the nav item for whichever section is currently on screen.
-export const useScrollSpy = (ids) => {
-  const [active, setActive] = useState(ids[0]);
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.5, 1] }
-    );
-
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter(Boolean);
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [ids]);
-
-  return active;
-};
-
 export const useScrolledPast = (offset = 400) => {
   const [passed, setPassed] = useState(false);
 
