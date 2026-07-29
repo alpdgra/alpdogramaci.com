@@ -6,181 +6,232 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alp Dogramaci | CV</title>
     <meta name="description" content="CV of Alp Dogramaci — Service Desk and AV Technician in Sydney, Australia.">
-    <meta name="theme-color" content="#242933">
+    <meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fbfbfc" media="(prefers-color-scheme: light)">
     <link rel="canonical" href="https://alpdogramaci.com/">
     <link rel="icon" href="/favicon.ico">
+
     <meta property="og:type" content="profile">
     <meta property="og:title" content="Alp Dogramaci | CV">
     <meta property="og:description" content="CV of Alp Dogramaci — Service Desk and AV Technician in Sydney, Australia.">
     <meta property="og:url" content="https://alpdogramaci.com/">
     <meta property="og:image" content="https://alpdogramaci.com/profile.jpg">
     <meta name="twitter:card" content="summary">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <main class="container">
-        <div class="resume-grid">
-            <div class="left-col">
-                <section id="home" class="profile">
+    <!-- Icon sprite: inlined so the page needs no icon font. -->
+    <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3.5 6.5 8.5 6 8.5-6" />
+        </symbol>
+        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3v5h5" />
+            <path d="M19 8.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7.5Z" />
+            <path d="M9 13h6M9 17h4" />
+        </symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.5 0h3.83v1.5h.05a4.2 4.2 0 0 1 3.77-2c4.03 0 4.78 2.5 4.78 5.76v5.74h-4v-5.09c0-1.21-.02-2.77-1.72-2.77-1.72 0-1.98 1.32-1.98 2.68v5.18h-4v-11Z" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17 17 7M9 7h8v8" />
+        </symbol>
+    </svg>
 
-                    <header>
-                        <img src="profile.jpg" alt="Alp Dogramaci">
-                        <h1><strong>Alp Dogramaci</strong></h1>
-                        <h3></h3>
-                    </header>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="card card--profile">
+                <header class="identity">
+                    <span class="avatar">
+                        <img src="/profile.jpg" alt="Alp Dogramaci" width="96" height="96" fetchpriority="high">
+                    </span>
+                    <h1>Alp Dogramaci</h1>
+                    <p class="role">Service Desk &amp; AV Technician</p>
+                    <p class="place">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="#i-pin" />
+                        </svg>
+                        Sydney, Australia
+                    </p>
+                </header>
 
-                    <address>
-                        <p>
-                            <i class='bx bx-map'></i> Sydney, Australia
-                        </p>
-                        <p>
-                            <a href="mailto:me@alpdogramaci.com">
-                                <i class='bx bx-envelope'></i> me@alpdogramaci.com
-                            </a>
-                        </p>
-                        <p>
-                            <a href="/resume.pdf" target="_blank">
-                                <i class='bx bx-file'></i> PDF CV
-                            </a>
-                        </p>
-                    </address>
-
-
-                </section>
-
-                <section id="profile">
-                    <h2>Profile</h2>
-                </section>
-
-                <section id="skills">
-                    <h2>Skills</h2>
-                    <ul>
-                        <li>Support</li>
-                        <li>Infrastructure</li>
-                    </ul>
-                </section>
-
-                <section class="interests">
-                    <h2>Interests</h2>
-                    <ul>
-                        <li>IT</li>
-                    </ul>
-                </section>
-
-                <section class="social">
-                    <h2>Social</h2>
-                    <div>
-                        <a href="https://www.linkedin.com/in/alp-dogramaci-0b2143265" target="_blank">
-                            <i class='bx bxl-linkedin-square'></i> LinkedIn
+                <ul class="contact">
+                    <li>
+                        <a href="mailto:me@alpdogramaci.com">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="#i-mail" />
+                            </svg>
+                            <span>me@alpdogramaci.com</span>
                         </a>
-                    </div>
-                </section>
+                    </li>
+                    <li>
+                        <a href="/resume.pdf">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="#i-file" />
+                            </svg>
+                            <span>PDF CV</span>
+                            <svg class="icon icon--trail" aria-hidden="true">
+                                <use href="#i-arrow" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/alp-dogramaci-0b2143265" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg class="icon" aria-hidden="true">
+                                <use href="#i-linkedin" />
+                            </svg>
+                            <span>LinkedIn</span>
+                            <svg class="icon icon--trail" aria-hidden="true">
+                                <use href="#i-arrow" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
-            <div class="right-col">
-                <section id="experience">
-                    <h2>Experience</h2>
-                    <div class="timeline">
-                        <article>
-                            <div class="timeline-point"></div>
-                            <div class="content">
-                                <h3>Service Desk and AV Technician</h3>
-                                <div class="institution">
-                                    <span>Hills Grammar</span>
-                                    <img src="https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/AU.svg" alt="AU">
-                                </div>
-                                <time>Jul. 2023 - Present</time>
-                                <p>
-                                    Microsoft 365 Cloud Suite (Azure AD, Intune, Entra, Endpoint Protection,
-                                    SharePoint, Teams, Power Apps, Power Automate) and On-Prem (Windows Server, AD,
-                                    GPO, Clearpass, HPE).
-                                </p>
-                            </div>
-                        </article>
+            <section class="card" aria-labelledby="skills-title">
+                <h2 class="section-title" id="skills-title">Skills</h2>
+                <ul class="chips">
+                    <li class="chip">Support</li>
+                    <li class="chip">Infrastructure</li>
+                </ul>
+            </section>
 
-                        <article>
-                            <div class="timeline-point"></div>
-                            <div class="content">
-                                <h3>IT and Electronics Services Technician</h3>
-                                <div class="institution">
-                                    <span>Interlink Services</span>
-                                    <img src="https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/AU.svg" alt="AU">
-                                </div>
-                                <time>Jan. 2023 - May. 2023</time>
-                                <p>
-                                    Perform asset management, hardware troubleshooting & various related duties
-                                </p>
-                            </div>
-                        </article>
+            <section class="card" aria-labelledby="interests-title">
+                <h2 class="section-title" id="interests-title">Interests</h2>
+                <ul class="chips">
+                    <li class="chip">IT</li>
+                </ul>
+            </section>
+        </aside>
 
-                        <article>
-                            <div class="timeline-point"></div>
-                            <div class="content">
-                                <h3>Apprentice Mechanic</h3>
-                                <div class="institution">
-                                    <span>Nissan Motor Corporation</span>
-                                    <img src="https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/AU.svg" alt="AU">
-                                </div>
-                                <time>Jun. 2022 - Nov. 2022</time>
-                                <p>
-                                    Maintenance & Repair · Stocking · Automotive · Automotive Repair · Mechanics
-                                </p>
-                            </div>
-                        </article>
+        <main class="content" id="main">
+            <section aria-labelledby="experience-title">
+                <h2 class="section-title" id="experience-title">Experience</h2>
+                <ol class="timeline">
+                    <li>
+                        <h3>Service Desk and AV Technician</h3>
+                        <p class="meta">
+                            <span class="org">Hills Grammar</span>
+                            <span class="badge">AU</span>
+                        </p>
+                        <p class="period"><time datetime="2023-07">Jul 2023</time> &ndash; Present</p>
+                        <p class="summary">
+                            Microsoft 365 Cloud Suite (Azure AD, Intune, Entra, Endpoint Protection, SharePoint, Teams,
+                            Power Apps, Power Automate) and On-Prem (Windows Server, AD, GPO, Clearpass, HPE).
+                        </p>
+                    </li>
 
-                        <article>
-                            <div class="timeline-point"></div>
-                            <div class="content">
-                                <h3>Cashier</h3>
-                                <div class="institution">
-                                    <span>Oporto</span>
-                                    <img src="https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/AU.svg" alt="AU">
-                                </div>
-                                <time>Mar. 2018 - May. 2020</time>
-                                <p>
-                                    Cashiering · Stocking · Customer Service
-                                </p>
-                            </div>
-                        </article>
-                    </div>
-                </section>
+                    <li>
+                        <h3>IT and Electronics Services Technician</h3>
+                        <p class="meta">
+                            <span class="org">Interlink Services</span>
+                            <span class="badge">AU</span>
+                        </p>
+                        <p class="period"><time datetime="2023-01">Jan 2023</time> &ndash; <time
+                                datetime="2023-05">May 2023</time></p>
+                        <p class="summary">
+                            Perform asset management, hardware troubleshooting &amp; various related duties.
+                        </p>
+                    </li>
 
-                <section id="education">
-                    <h2>Education</h2>
-                    <div class="timeline">
-                        <article>
-                            <div class="timeline-point"></div>
-                            <div class="content">
-                                <h3>Bachelor of Information Technology, Cybersecurity</h3>
+                    <li>
+                        <h3>Apprentice Mechanic</h3>
+                        <p class="meta">
+                            <span class="org">Nissan Motor Corporation</span>
+                            <span class="badge">AU</span>
+                        </p>
+                        <p class="period"><time datetime="2022-06">Jun 2022</time> &ndash; <time
+                                datetime="2022-11">Nov 2022</time></p>
+                        <p class="summary">
+                            Maintenance &amp; Repair · Stocking · Automotive · Automotive Repair · Mechanics
+                        </p>
+                    </li>
 
-                                <div class="institution">
-                                    <span>2023 - Present | Macquarie University</span>
-                                    <img src="https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/AU.svg" alt="AU">
-                                </div>
-                                <p>WAM: 81.74 ~ GPA: 6.22</p>
-                            </div>
-                        </article>
+                    <li>
+                        <h3>Cashier</h3>
+                        <p class="meta">
+                            <span class="org">Oporto</span>
+                            <span class="badge">AU</span>
+                        </p>
+                        <p class="period"><time datetime="2018-03">Mar 2018</time> &ndash; <time
+                                datetime="2020-05">May 2020</time></p>
+                        <p class="summary">
+                            Cashiering · Stocking · Customer Service
+                        </p>
+                    </li>
+                </ol>
+            </section>
 
-                        <article>
-                            <div class="timeline-point"></div>
-                            <div class="content">
-                                <h3>Higher School Certificate</h3>
+            <section aria-labelledby="education-title">
+                <h2 class="section-title" id="education-title">Education</h2>
+                <ol class="timeline">
+                    <li>
+                        <h3>Bachelor of Information Technology, Cybersecurity</h3>
+                        <p class="meta">
+                            <span class="org">Macquarie University</span>
+                            <span class="badge">AU</span>
+                        </p>
+                        <p class="period"><time datetime="2023">2023</time> &ndash; Present</p>
+                        <p class="summary">WAM 81.74 · GPA 6.22</p>
+                    </li>
 
-                                <div class="institution">
-                                    <span>2013 - 2021 | The Hills Grammar School</span>
-                                    <img src="https://cdn.jsdelivr.net/npm/country-flag-icons/1x1/AU.svg" alt="AU">
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </main>
+                    <li>
+                        <h3>Higher School Certificate</h3>
+                        <p class="meta">
+                            <span class="org">The Hills Grammar School</span>
+                            <span class="badge">AU</span>
+                        </p>
+                        <p class="period"><time datetime="2013">2013</time> &ndash; <time datetime="2021">2021</time></p>
+                    </li>
+                </ol>
+            </section>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; Alp Dogramaci &middot; <a href="mailto:me@alpdogramaci.com">me@alpdogramaci.com</a></p>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Alp Dogramaci",
+        "url": "https://alpdogramaci.com/",
+        "image": "https://alpdogramaci.com/profile.jpg",
+        "email": "me@alpdogramaci.com",
+        "jobTitle": "Service Desk and AV Technician",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sydney",
+            "addressCountry": "AU"
+        },
+        "worksFor": { "@type": "Organization", "name": "Hills Grammar" },
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Macquarie University" },
+            { "@type": "HighSchool", "name": "The Hills Grammar School" }
+        ],
+        "knowsAbout": ["IT Support", "Infrastructure", "Microsoft 365", "Cybersecurity"],
+        "sameAs": ["https://www.linkedin.com/in/alp-dogramaci-0b2143265"]
+    }
+    </script>
 </body>
 
 </html>

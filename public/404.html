@@ -6,27 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>Page not found | Alp Dogramaci</title>
+    <meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fbfbfc" media="(prefers-color-scheme: light)">
     <link rel="icon" href="/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-    <main class="container">
-        <section class="profile">
-            <header>
-                <h1><strong>404</strong></h1>
-                <h3>This page doesn't exist.</h3>
-            </header>
-            <address>
-                <p>
-                    <a href="/">
-                        <i class='bx bx-home'></i> Back to CV
-                    </a>
-                </p>
-            </address>
-        </section>
+<body class="centered">
+    <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 6l-6 6 6 6M5 12h14" />
+        </symbol>
+    </svg>
+
+    <main class="card notfound">
+        <p class="code">404</p>
+        <h1>Page not found</h1>
+        <p class="summary">The page you asked for doesn't exist &mdash; it may have moved or never been here.</p>
+        <ul class="contact">
+            <li>
+                <a href="/">
+                    <svg class="icon" aria-hidden="true">
+                        <use href="#i-back" />
+                    </svg>
+                    <span>Back to the CV</span>
+                </a>
+            </li>
+        </ul>
     </main>
 </body>
 
