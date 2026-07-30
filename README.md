@@ -24,7 +24,8 @@ an external script, font or image, or the browser will block it.
 
 Content is written directly in `index.html`. Colours, spacing and type are the custom properties at
 the top of `styles.css`: `--accent` recolours the page, `--gutter` moves the date column, and the
-`prefers-color-scheme: dark` block re-tints to a warm dark without changing layout.
+`prefers-color-scheme: dark` block re-tints to a mid warm charcoal without changing layout. To make
+the site dark for every visitor, drop that media query and keep the declarations inside it.
 
 ## Local preview
 
