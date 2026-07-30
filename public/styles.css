@@ -214,10 +214,12 @@ a:hover {
   color: var(--ink-faint);
 }
 
-/* The portrait is a plain rectangle — no circle crop, no ring. */
+/* The portrait is a plain rectangle — no circle crop, no ring. The max width
+   is held just under the source image's effective width after the 4:5 crop,
+   so it is never upscaled. Raise it once a larger source is in place. */
 .portrait {
   flex: 0 0 auto;
-  width: clamp(7rem, 4rem + 10vw, 10.5rem);
+  width: clamp(7rem, 4rem + 10vw, 9.5rem);
 }
 
 .portrait img {

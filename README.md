@@ -73,7 +73,8 @@ python3 -m http.server -d public 8080
   that link work.
 - Adding an external asset (analytics, a CDN script, a hosted font) means widening the CSP in
   `_headers` to match, or the browser will block it.
-- `profile.jpg` is still a 128×128 placeholder. The portrait slot is a 4:5 rectangle rendered up to
-  ~168px wide, so replace it with an image at least 360×450 (720×900 for high-DPI screens).
+- `profile.jpg` is 200×200, which is why the portrait is capped at 9.5rem — any wider and the browser
+  upscales it. Replacing it with a 720×900 (or square 800×800) source lets that cap go back up and
+  renders sharply on high-DPI screens.
 - Print styles are included: the CV prints to two A4 pages with entries kept whole, so "Save as PDF"
   from the browser is a reasonable way to produce `resume.pdf`.
