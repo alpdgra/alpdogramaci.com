@@ -9,7 +9,6 @@ index.html     # the CV
 styles.css
 fonts/         # IBM Plex Sans + Plex Mono, self-hosted woff2 latin subsets
 profile.jpg
-resume.pdf     # generated from this page's own print stylesheet
 favicon.ico
 robots.txt
 sitemap.xml
@@ -26,9 +25,6 @@ an external script, font or image, or the browser will block it.
 Content is written directly in `index.html`. Colours, spacing and type are the custom properties at
 the top of `styles.css`: `--accent` recolours the page, `--gutter` moves the date column, and the
 `prefers-color-scheme: dark` block re-tints to a warm dark without changing layout.
-
-Regenerate `resume.pdf` after a content change by printing the page to PDF at A4 — the print
-stylesheet is what produces it, so the document and the site stay in step.
 
 ## Local preview
 

@@ -39,7 +39,9 @@
    Tokens
 ------------------------------------------------------------------ */
 :root {
-  color-scheme: light dark;
+  /* Committed to light: the page is warm paper, so it does not follow the
+     OS dark setting. */
+  color-scheme: light;
 
   /* Warm paper and ink, with the accent lifted from the red in the portrait. */
   --paper: oklch(0.973 0.008 80);
@@ -54,26 +56,13 @@
   --sans: "Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  --text: clamp(0.9rem, 0.87rem + 0.12vw, 0.97rem);
-  --small: clamp(0.72rem, 0.7rem + 0.08vw, 0.78rem);
-  --title: clamp(1rem, 0.96rem + 0.2vw, 1.14rem);
-  --display: clamp(2.1rem, 1.2rem + 4.4vw, 4.35rem);
+  --text: clamp(1rem, 0.95rem + 0.22vw, 1.18rem);
+  --small: clamp(0.82rem, 0.79rem + 0.14vw, 0.94rem);
+  --title: clamp(1.14rem, 1.06rem + 0.35vw, 1.42rem);
+  --display: clamp(2.3rem, 1.3rem + 5vw, 5.5rem);
 
-  --gutter: 7.5rem;
+  --gutter: 8.5rem;
   --pad: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: oklch(0.175 0.009 65);
-    --paper-2: oklch(0.215 0.011 65);
-    --ink: oklch(0.93 0.008 80);
-    --ink-soft: oklch(0.75 0.012 80);
-    --ink-faint: oklch(0.6 0.012 80);
-    --rule: oklch(0.93 0.008 80 / 0.18);
-    --rule-hard: oklch(0.93 0.008 80 / 0.8);
-    --accent: oklch(0.68 0.17 30);
-  }
 }
 
 /* ------------------------------------------------------------------
@@ -155,24 +144,8 @@ a:hover {
 }
 
 .sheet {
-  max-width: 60rem;
+  max-width: 84rem;
   margin-inline: auto;
-}
-
-/* ------------------------------------------------------------------
-   Document strip
------------------------------------------------------------------- */
-.strip {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--rule);
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
 }
 
 /* ------------------------------------------------------------------
@@ -184,6 +157,7 @@ a:hover {
   align-items: flex-end;
   gap: clamp(1.25rem, 0.5rem + 2.5vw, 2.75rem);
   padding-block: clamp(1.75rem, 1rem + 2.5vw, 3.25rem) clamp(1.25rem, 0.8rem + 1.5vw, 2rem);
+  border-bottom: 1px solid var(--rule-hard);
 }
 
 .masthead__text {
@@ -207,11 +181,19 @@ a:hover {
   text-wrap: balance;
 }
 
-.located {
-  margin-top: 0.35rem;
+/* Contact sits hard right so the masthead holds both edges of the sheet,
+   the same way the entries below it do. */
+.contact {
+  margin-inline-start: auto;
   font-family: var(--mono);
   font-size: var(--small);
+  line-height: 1.75;
+  text-align: right;
   color: var(--ink-faint);
+}
+
+.contact a {
+  color: var(--ink-soft);
 }
 
 /* The portrait is a plain rectangle — no circle crop, no ring. The max width
@@ -229,33 +211,6 @@ a:hover {
   background: var(--paper-2);
   border: 1px solid var(--rule-hard);
   filter: saturate(0.94);
-}
-
-/* ------------------------------------------------------------------
-   Vitals — the rule band under the masthead
------------------------------------------------------------------- */
-.vitals {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.1rem;
-  padding-block: 0.7rem;
-  border-block: 1px solid var(--rule-hard);
-  font-family: var(--mono);
-  font-size: var(--small);
-}
-
-.vitals li {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  margin-inline-end: -0.1rem;
-}
-
-.vitals li:not(:last-child)::after {
-  content: "";
-  width: 1px;
-  height: 0.85em;
-  background: var(--rule);
 }
 
 /* ------------------------------------------------------------------
@@ -283,11 +238,12 @@ section {
 }
 
 /* ------------------------------------------------------------------
-   Entries — year gutter on the left, content on the right
+   Entries — dates in the left gutter, role in the middle, place hard
+   right, so both outer edges of the sheet are held.
 ------------------------------------------------------------------ */
 .entry {
   display: grid;
-  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  grid-template-columns: var(--gutter) minmax(0, 1fr) auto;
   gap: 0 1.5rem;
   padding-block: clamp(1.1rem, 0.8rem + 0.8vw, 1.6rem);
   border-top: 1px solid var(--rule);
@@ -307,10 +263,15 @@ section {
   color: var(--ink-soft);
 }
 
-/* The em dash hangs off the start year only, so the two lines read as a range. */
+/* The em dash hangs off the start date only, so the two lines read as a range.
+   A single-date entry (.when--point) gets no dash. */
 .when > time:first-child::after {
   content: " \2014";
   color: var(--ink-faint);
+}
+
+.when--point > time:first-child::after {
+  content: none;
 }
 
 .when__end {
@@ -340,16 +301,19 @@ section {
   color: var(--ink-soft);
 }
 
-.at__sep {
-  margin-inline: 0.15rem;
+.where {
+  font-family: var(--mono);
+  font-size: var(--small);
   color: var(--ink-faint);
+  text-align: right;
+  white-space: nowrap;
 }
 
 .notes {
   margin-top: 0.85rem;
   display: grid;
   gap: 0.4rem;
-  max-width: 64ch;
+  max-width: 68ch;
   color: var(--ink-soft);
 }
 
@@ -406,7 +370,7 @@ section {
   padding-top: 0.6rem;
   border-top: 1px solid var(--rule-hard);
   font-family: var(--mono);
-  font-size: 0.66rem;
+  font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -415,7 +379,7 @@ section {
 /* ------------------------------------------------------------------
    Narrow screens — the gutter folds above the entry
 ------------------------------------------------------------------ */
-@media (max-width: 44rem) {
+@media (max-width: 52rem) {
   .entry,
   .skills > div {
     grid-template-columns: minmax(0, 1fr);
@@ -425,11 +389,29 @@ section {
   .when {
     flex-direction: row;
     gap: 0.4rem;
-    margin-bottom: 0.45rem;
+    order: 1;
+  }
+
+  /* Place moves up next to the dates instead of trailing the bullets. */
+  .where {
+    order: 2;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  .what {
+    order: 3;
   }
 
   .masthead h1 {
     letter-spacing: -0.04em;
+  }
+
+  /* Contact drops below the name and reads left with everything else. */
+  .contact {
+    margin-inline-start: 0;
+    flex-basis: 100%;
+    text-align: left;
   }
 
   .skills dd {
@@ -467,14 +449,18 @@ section {
     --rule: rgba(0, 0, 0, 0.22);
     --rule-hard: rgba(0, 0, 0, 0.75);
     --accent: #000;
-    --display: 2.6rem;
+    /* Type is pinned in points for print; the on-screen scale is too large
+       for paper now that it has been bumped up. */
+    --text: 9.2pt;
+    --small: 7.8pt;
+    --title: 10.4pt;
+    --display: 20pt;
     --gutter: 6rem;
   }
 
   body {
     padding: 0;
-    font-size: 9.6pt;
-    line-height: 1.42;
+    line-height: 1.36;
   }
 
   .sheet {
@@ -486,33 +472,34 @@ section {
   }
 
   .masthead {
-    padding-block: 1.1rem 0.9rem;
+    padding-block: 0.6rem 0.8rem;
   }
 
   .portrait {
-    width: 6.5rem;
+    width: 5.5rem;
   }
 
   section {
-    margin-top: 1.4rem;
+    margin-top: 1rem;
   }
 
   .entry,
   .skills > div {
-    padding-block: 0.6rem;
+    padding-block: 0.45rem;
     break-inside: avoid;
   }
 
   .notes {
-    margin-top: 0.45rem;
+    margin-top: 0.35rem;
+    gap: 0.25rem;
   }
 
   .section {
     break-after: avoid;
   }
 
-  /* Spell out link targets that paper can't resolve. */
-  .vitals a[href^="http"]::after {
+  /* The LinkedIn label is shortened on screen; print the full URL. */
+  .contact a[href^="http"]::after {
     content: " (" attr(href) ")";
     color: var(--ink-faint);
   }
