@@ -14,6 +14,7 @@ public/          # everything that gets deployed (the Pages build output directo
   fonts/         # IBM Plex Sans + Plex Mono, self-hosted woff2 latin subsets
   profile.jpg
   favicon.ico
+  resume.pdf     # generated from this page's print stylesheet
   robots.txt
   sitemap.xml
   _headers       # security + caching headers applied at the edge
@@ -69,8 +70,9 @@ python3 -m http.server -d public 8080
 
 ## Notes
 
-- The sidebar links to `/resume.pdf`, which is not in the repo. Drop the file into `public/` to make
-  that link work.
+- `public/resume.pdf` is generated from this page's own print stylesheet, so the PDF and the site
+  never drift apart. Regenerate it after a content change by printing the page to PDF (A4), or with
+  Playwright: `page.pdf({ format: 'A4', printBackground: true })` against a local server.
 - Adding an external asset (analytics, a CDN script, a hosted font) means widening the CSP in
   `_headers` to match, or the browser will block it.
 - `profile.jpg` is 200×200, which is why the portrait is capped at 9.5rem — any wider and the browser
