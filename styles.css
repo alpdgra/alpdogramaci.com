@@ -63,20 +63,19 @@
   --pad: clamp(1.25rem, 0.5rem + 3vw, 3.5rem);
 }
 
-/* Dark mode is a mid warm charcoal, deliberately well clear of black — the
-   near-black version was hard to read. Text sits brighter on it to match.
-   To make the site dark for everyone, drop the media query and keep the
-   declarations. */
+/* Dark mode: a cool blue-dark, with the text and rules pitched bright enough
+   on it to stay easily readable. To make the site dark for everyone, drop the
+   media query and keep the declarations inside it. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: oklch(0.3 0.009 70);
-    --paper-2: oklch(0.35 0.011 70);
-    --ink: oklch(0.965 0.006 85);
-    --ink-soft: oklch(0.88 0.01 85);
-    --ink-faint: oklch(0.76 0.012 85);
-    --rule: oklch(0.965 0.006 85 / 0.24);
-    --rule-hard: oklch(0.965 0.006 85 / 0.8);
-    --accent: oklch(0.78 0.15 35);
+    --paper: #1a1b26;
+    --paper-2: #23242f;
+    --ink: #edeff6;
+    --ink-soft: #c5c9d6;
+    --ink-faint: #979cae;
+    --rule: rgb(237 239 246 / 0.16);
+    --rule-hard: rgb(237 239 246 / 0.7);
+    --accent: #f1785f;
   }
 }
 
