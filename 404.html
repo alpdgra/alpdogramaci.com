@@ -8,7 +8,11 @@
     <title>404 — Alp Dogramaci</title>
     <meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#16140f" media="(prefers-color-scheme: dark)">
+    <!-- Paths here stay absolute: this page is served for arbitrary URLs, so
+         relative ones would resolve against the wrong directory. -->
     <link rel="icon" href="/favicon.ico">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'">
     <link rel="preload" href="/fonts/plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/styles.css">
 </head>
